@@ -1,19 +1,14 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React from "react";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import reducer from "./Reducers/";
+import middleware from "./Middlewares";
+import Home from "./Components/Home";
 export default function App() {
+  const store = createStore(reducer, middleware);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <Home />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
