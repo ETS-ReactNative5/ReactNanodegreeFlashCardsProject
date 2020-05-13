@@ -1,23 +1,12 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { connect } from "react-redux";
-import { handleInitialData, handleAddQuestion } from "../../Actions/shared";
-import { handleAddDeck } from "../../Actions/decks";
+import testRedux from "../../utils/testRedux";
 
 function Home(props) {
   useEffect(() => {
     console.log("Hello Hooks");
-    const testRedux = async () => {
-      let t = await props.dispatch(handleInitialData());
-      t = await props.dispatch(handleAddDeck("deck0"));
-      t = await props.dispatch(
-        handleAddQuestion(
-          { title: "q0", answer: "ans0" },
-          "6e2ab6b0-9565-11ea-b3d9-bf304f1d6b03"
-        )
-      );
-    };
-    testRedux();
+    // testRedux();
   }, []);
   return (
     <View style={styles.container}>
