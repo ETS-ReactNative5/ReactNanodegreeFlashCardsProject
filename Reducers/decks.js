@@ -13,7 +13,7 @@ export default function (state = {}, action) {
         [action.question.deckID]: {
           ...state[action.question.deckID],
           questions: state[action.question.deckID].questions.concat([
-            action.question.deckID,
+            action.question.id,
           ]),
         },
       };
