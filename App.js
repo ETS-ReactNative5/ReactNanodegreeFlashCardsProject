@@ -15,7 +15,7 @@ function MyTabs() {
   return (
     <Tab.Navigator barStyle={[styles.center]}>
       <Tab.Screen name="DECKS" component={Home} />
-      <Tab.Screen name="AddCard" component={AddDeck} />
+      <Tab.Screen name="AddDeck" component={AddDeck} />
     </Tab.Navigator>
   );
 }

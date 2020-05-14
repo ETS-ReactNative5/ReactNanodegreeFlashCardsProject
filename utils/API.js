@@ -48,3 +48,13 @@ export const getAllData = async () => {
   questions = questions !== null ? JSON.parse(questions) : {};
   return { decks, questions };
 };
+export const deleteDeck = async (deckID) => {
+  let { decks, questions } = await getAllData();
+  delete decks[deckID];
+  let q_ids = Object.keys(questions);
+  for (let q_id of q_ids) {
+    if (questions[q_id].deckID === deckID) delete questions[q_id];
+  }
+  AsyncStorage.setItem("@decks", JSON.stringify(decks));
+  AsyncStorage.setItem("@questions", JSON.stringify(questions));
+};

@@ -1,4 +1,5 @@
 import { RECEIVE_QUESTIONS } from "../Actions/questions";
+import { DELETE_DECK } from "../Actions/decks";
 import { ADD_QUESTION } from "../Actions/shared";
 
 export default function (state = {}, action) {
@@ -7,6 +8,14 @@ export default function (state = {}, action) {
       return action.questions;
     case ADD_QUESTION:
       return { ...state, [action.question.id]: action.question };
+    case DELETE_DECK:
+      let updated_deleted = { ...state };
+      const _D_Deck_q_ids = Object.keys(updated_deleted);
+      for (let q_id of _D_Deck_q_ids) {
+        if (updated_deleted[q_id].deckID === action.id)
+          delete updated_deleted[q_id];
+      }
+      return updated_deleted;
     default:
       return state;
   }

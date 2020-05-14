@@ -11,33 +11,34 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../../Actions/shared";
 import DeckHeader from "./DeckHeader";
 function Home(props) {
+  const { deckIds } = props;
   console.log("HomeScreen props", props);
   useEffect(() => {
     console.log("Hello Hooks");
     props.getInitialData();
   }, []); // in mounting only
-  const onDeckPress = (deck) => {
+  const onDeckPress = (deckId) => {
     // navigate to DeckScreen
-    props.navigation.push("DeckScreen", { deck });
+    props.navigation.push("DeckScreen", { deckId });
   };
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={Object.values(props.decks)}
-        keyExtractor={(item) => item.id}
+        data={deckIds}
+        keyExtractor={(item) => item}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.deckHeader]}
             onPress={() => onDeckPress(item)}
           >
-            <DeckHeader deck={item} />
+            <DeckHeader deckId={item} />
           </TouchableOpacity>
         )}
       />
     </SafeAreaView>
   );
 }
-const mapStateToProps = ({ decks }) => ({ decks });
+const mapStateToProps = ({ decks }) => ({ deckIds: Object.keys(decks) });
 const mapDispatchToProps = (dispatch) => ({
   getInitialData: () => dispatch(handleInitialData()),
 });

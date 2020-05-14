@@ -15,7 +15,9 @@ function AddDeck(props) {
     if (title) {
       setTitle("");
       let action = await props.dispatch(handleAddDeck(title)); // action is returned as I returned it in my middlware
-      props.navigation.push("DeckScreen", action.deck);
+      // console.log("navigate to deck screen with", action.deck);
+      props.navigation.navigate("DECKS"); // tab
+      props.navigation.push("DeckScreen", { deckId: action.deck.id });
     }
   };
   return (

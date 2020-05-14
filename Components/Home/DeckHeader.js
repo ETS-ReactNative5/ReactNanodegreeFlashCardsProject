@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
-export default function DeckHeader(props) {
+import { connect } from "react-redux";
+function DeckHeader(props) {
+  console.log(props);
   const { title, questions } = props.deck;
   return (
     <View>
@@ -9,3 +11,5 @@ export default function DeckHeader(props) {
     </View>
   );
 }
+const mapStateToProps = ({ decks }, { deckId }) => ({ deck: decks[deckId] });
+export default connect(mapStateToProps)(DeckHeader);
