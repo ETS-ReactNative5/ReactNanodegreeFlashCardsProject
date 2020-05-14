@@ -1,26 +1,34 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  FlatList,
+  SafeAreaView,
+} from "react-native";
 import { connect } from "react-redux";
 import { handleInitialData } from "../../Actions/shared";
-
+import DeckHeader from "./DeckHeader";
 function Home(props) {
   console.log("HomeScreen props", props);
   useEffect(() => {
     console.log("Hello Hooks");
     props.getInitialData();
   }, []); // in mounting only
-  const onDeckPress = () => {
-    console.log("Deck pressed");
-    props.navigation.push("DeckScreen");
-  };
+
   return (
-    <View style={styles.container}>
-      <Text>Welcome to Decks list screen</Text>
-      <Text>{JSON.stringify(props.decks)}</Text>
-      <TouchableOpacity onPress={onDeckPress}>
-        <Text>Click Me</Text>
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={Object.values(props.decks)}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={[styles.deckHeader]}>
+            <DeckHeader deck={item} />
+          </TouchableOpacity>
+        )}
+      />
+    </SafeAreaView>
   );
 }
 const mapStateToProps = ({ decks }) => ({ decks });
@@ -35,5 +43,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  deckHeader: {
+    borderWidth: 1,
+    borderRadius: 7,
+    borderColor: "#bbb",
+    margin: 10,
+    padding: 10,
   },
 });
