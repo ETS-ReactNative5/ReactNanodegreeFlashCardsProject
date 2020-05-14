@@ -1,14 +1,38 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { connect } from "react-redux";
+import { handleAddDeck } from "../Actions/decks";
 
 function AddDeck(props) {
+  const [title, setTitle] = useState("");
+  const createDeck = (title) => {
+    if (title) {
+      props.dispatch(handleAddDeck(title));
+      setTitle("");
+      // TODO navigate to this Deck view
+    }
+  };
   return (
     <View style={styles.container}>
-      <Text>Welcome to Add Deck Screen</Text>
+      <Text>What is the title of your new deck?</Text>
+      <TextInput
+        placeholder="Deck Title"
+        value={title}
+        onChangeText={(text) => setTitle(text)}
+      />
+      <TouchableOpacity onPress={() => createDeck(title)}>
+        <Text>Create Deck</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-export default AddDeck;
+export default connect()(AddDeck);
 
 const styles = StyleSheet.create({
   container: {
