@@ -1,20 +1,33 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import testRedux from "../../utils/testRedux";
+import { handleInitialData } from "../../Actions/shared";
 
 function Home(props) {
+  console.log("HomeScreen props", props);
   useEffect(() => {
     console.log("Hello Hooks");
-    // testRedux();
-  }, []);
+    props.getInitialData();
+  }, []); // in mounting only
+  const onDeckPress = () => {
+    console.log("Deck pressed");
+    props.navigation.push("DeckScreen");
+  };
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Welcome to Decks list screen</Text>
+      <Text>{JSON.stringify(props.decks)}</Text>
+      <TouchableOpacity onPress={onDeckPress}>
+        <Text>Click Me</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-export default connect()(Home);
+const mapStateToProps = ({ decks }) => ({ decks });
+const mapDispatchToProps = (dispatch) => ({
+  getInitialData: () => dispatch(handleInitialData()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 const styles = StyleSheet.create({
   container: {
