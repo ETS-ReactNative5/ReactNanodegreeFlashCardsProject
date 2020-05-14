@@ -15,11 +15,23 @@ function DeckScreen(props) {
       })
     );
   };
+  const onAddCardPress = () => {
+    props.navigation.push("AddCard", { deckId });
+  };
+  const onStartQuiz = () => {
+    props.navigation.push("Quiz", { deckId });
+  };
   return (
     <View style={styles.container}>
       <DeckHeader deckId={deckId} />
       <TouchableOpacity onPress={onDeleteDeck}>
         <Text>Delete Deck</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onAddCardPress}>
+        <Text>Add Card</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onStartQuiz}>
+        <Text>Start Quiz</Text>
       </TouchableOpacity>
     </View>
   );
