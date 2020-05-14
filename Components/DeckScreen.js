@@ -1,11 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-
+import DeckHeader from "./Home/DeckHeader";
 function DeckScreen(props) {
   console.log("Deck screen props", props);
+  const { deck } = props.route.params;
   return (
     <View style={styles.container}>
-      <Text>Welcome single Deck Screen</Text>
+      <DeckHeader deck={deck} />
     </View>
   );
 }
