@@ -16,14 +16,20 @@ function Home(props) {
     console.log("Hello Hooks");
     props.getInitialData();
   }, []); // in mounting only
-
+  const onDeckPress = (deck) => {
+    // navigate to DeckScreen
+    props.navigation.push("DeckScreen", { deck });
+  };
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         data={Object.values(props.decks)}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity style={[styles.deckHeader]}>
+          <TouchableOpacity
+            style={[styles.deckHeader]}
+            onPress={() => onDeckPress(item)}
+          >
             <DeckHeader deck={item} />
           </TouchableOpacity>
         )}

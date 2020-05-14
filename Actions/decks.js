@@ -8,7 +8,10 @@ export const receiveDecks = (decksObject) => ({
 });
 export const addDeck = (deck) => ({ type: ADD_DECK, deck });
 export const handleAddDeck = (title) => {
-  return (dispatch) => {
-    saveDeck(title).then((deck) => dispatch(addDeck(deck)));
+  return async (dispatch) => {
+    let deck = await saveDeck(title);
+    const action = addDeck(deck);
+    dispatch(action); //base dispatch returns nothing, I want to return the action
+    return action;
   };
 };

@@ -11,11 +11,13 @@ import { handleAddDeck } from "../Actions/decks";
 
 function AddDeck(props) {
   const [title, setTitle] = useState("");
-  const createDeck = (title) => {
+  const createDeck = async (title) => {
     if (title) {
-      props.dispatch(handleAddDeck(title));
       setTitle("");
+      let action = await props.dispatch(handleAddDeck(title));
+      console.log(action);
       // TODO navigate to this Deck view
+      // props.navigation.push("DeckScreen", action.deck);
     }
   };
   return (
