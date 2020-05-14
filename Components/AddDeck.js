@@ -14,10 +14,8 @@ function AddDeck(props) {
   const createDeck = async (title) => {
     if (title) {
       setTitle("");
-      let action = await props.dispatch(handleAddDeck(title));
-      console.log(action);
-      // TODO navigate to this Deck view
-      // props.navigation.push("DeckScreen", action.deck);
+      let action = await props.dispatch(handleAddDeck(title)); // action is returned as I returned it in my middlware
+      props.navigation.push("DeckScreen", action.deck);
     }
   };
   return (
