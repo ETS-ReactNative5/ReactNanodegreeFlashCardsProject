@@ -1,7 +1,7 @@
 # Flashcards Project
 
 Mobile application project using react-native
-This is a part of Udacity's React Nanodegree.
+This is a part of Udacity's React Nanodegree. [[Rubric.](https://review.udacity.com/#!/rubrics/1021/view)]
 
 ## Getting started
 
