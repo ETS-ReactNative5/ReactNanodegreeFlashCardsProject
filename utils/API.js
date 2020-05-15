@@ -1,4 +1,4 @@
-import AsyncStorage from "@react-native-community/async-storage";
+import { AsyncStorage } from "react-native";
 import { v1 as uuid } from "react-native-uuid";
 export const saveQuestion = async ({ title, answer }, deckID) => {
   let previousQuestions = {};

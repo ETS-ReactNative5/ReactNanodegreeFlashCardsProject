@@ -1,9 +1,20 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 import { connect } from "react-redux";
-import { reset } from "expo/build/AR";
+import { clearNotificationsAndSetOneForTomorrow } from "../utils/Notifications";
 
 function Quiz(props) {
+  useEffect(() => {
+    if (Platform.OS !== "web") {
+      clearNotificationsAndSetOneForTomorrow();
+    }
+  }, []);
   const { deckId } = props.route.params;
   const { questions, deckTitle } = props; // question -> {id,title,answer}
   const [questionIndex, setQuestionIndex] = useState(0);

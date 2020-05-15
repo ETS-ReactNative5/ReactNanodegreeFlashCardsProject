@@ -1,6 +1,6 @@
 import { handleInitialData, handleAddQuestion } from "../Actions/shared";
 import { handleAddDeck } from "../Actions/decks";
-import AsyncStorage from "@react-native-community/async-storage";
+import { AsyncStorage } from "react-native";
 const testRedux = async () => {
   //   await AsyncStorage.removeItem("@decks");
   //   await AsyncStorage.removeItem("@questions");
