@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./Reducers/";
@@ -28,6 +28,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
+        <View styles={styles.statusBar}></View>
         <Stack.Navigator>
           <Stack.Screen
             name="MyTabs"
@@ -48,4 +49,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignContent: "center",
   },
+  statusBar: { marginBottom: 20 },
 });

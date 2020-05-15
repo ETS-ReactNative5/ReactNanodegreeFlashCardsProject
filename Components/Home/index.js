@@ -23,6 +23,11 @@ function Home(props) {
   };
   return (
     <SafeAreaView style={styles.container}>
+      {deckIds.length === 0 && (
+        <View style={[styles.container]}>
+          <Text>Start Adding your decks and test your knowledge</Text>
+        </View>
+      )}
       <FlatList
         data={deckIds}
         keyExtractor={(item) => item}
