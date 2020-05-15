@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   SafeAreaView,
+  Dimensions,
 } from "react-native";
 import { connect } from "react-redux";
 import { handleInitialData } from "../../Actions/shared";
@@ -65,6 +66,8 @@ const styles = StyleSheet.create({
     borderColor: "#bbb",
     margin: 10,
     padding: 10,
+    width: Dimensions.get("window").width * 0.7,
+    alignItems: "center",
   },
   noDecks: {
     borderWidth: 1,
