@@ -21,7 +21,7 @@ Make sure you have yarn installed, then perform the following:
 
 ## Author
 
-Abdullah
+[abdullah-ali-a15781155](https://www.linkedin.com/in/abdullah-ali-a15781155/)
 
 ## Testing Platform
 
