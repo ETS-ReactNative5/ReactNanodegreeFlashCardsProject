@@ -9,11 +9,7 @@ function DeckScreen(props) {
   const { deckId } = props.route.params;
   const onDeleteDeck = () => {
     props.dispatch(handleDeleteDeck(deckId));
-    props.navigation.dispatch(
-      CommonActions.goBack({
-        key: "MyTabs",
-      })
-    );
+    props.navigation.dispatch(CommonActions.goBack());
   };
   const onAddCardPress = () => {
     props.navigation.push("AddCard", { deckId });

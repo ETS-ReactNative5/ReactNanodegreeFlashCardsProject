@@ -17,7 +17,7 @@ function AddCard(props) {
   const onCreateCard = () => {
     if (question && answer) {
       props.dispatch(handleAddQuestion({ title: question, answer }, deckId));
-      props.navigation.dispatch(CommonActions.goBack({ key: "DeckScreen" }));
+      props.navigation.dispatch(CommonActions.goBack());
     }
   };
   return (

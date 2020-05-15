@@ -12,6 +12,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import DeckScreen from "./Components/DeckScreen";
 import AddCard from "./Components/AddCard";
 import Quiz from "./Components/Quiz";
+import QuizResult from "./Components/QuizResult";
 const Tab = createMaterialBottomTabNavigator();
 function MyTabs() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
           <Stack.Screen name="DeckScreen" component={DeckScreen} />
           <Stack.Screen name="AddCard" component={AddCard} />
           <Stack.Screen name="Quiz" component={Quiz} />
+          <Stack.Screen name="QuizResult" component={QuizResult} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

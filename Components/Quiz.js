@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import { CommonActions } from "@react-navigation/native";
+import { reset } from "expo/build/AR";
 
 function Quiz(props) {
   const { deckId } = props.route.params;
@@ -9,15 +9,35 @@ function Quiz(props) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [points, setPoints] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
+  const reset = () => {
+    setQuestionIndex(0);
+    setPoints(0);
+    setShowAnswer(false);
+  };
   const onSubmitAnswer = (isCorrect) => {
-    if (isCorrect) setPoints((p) => p + 1);
+    let score = points;
+    if (isCorrect) {
+      score = points + 1;
+      setPoints(score);
+    }
     if (questionIndex < questions.length - 1) {
       setQuestionIndex((i) => i + 1);
     } else {
-      // navigate to Quiz Result send deckId & points
+      // reset and navigate to Quiz Result send deckId & deckTitle & points & totalPoints
+      reset();
+      props.navigation.push("QuizResult", {
+        deckId,
+        points: score,
+        deckTitle,
+        totalPoints: questions.length,
+      });
     }
   };
-  const { title, answer } = questions[questionIndex];
+  const title = questions[questionIndex] ? questions[questionIndex].title : "";
+  const answer = questions[questionIndex]
+    ? questions[questionIndex].answer
+    : "";
+
   return (
     <View style={[styles.container]}>
       <View>
