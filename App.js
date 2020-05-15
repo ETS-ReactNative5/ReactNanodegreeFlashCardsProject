@@ -9,6 +9,7 @@ import AddDeck from "./Components/AddDeck";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import DeckScreen from "./Components/DeckScreen";
 import AddCard from "./Components/AddCard";
 import Quiz from "./Components/Quiz";
@@ -16,9 +17,39 @@ import QuizResult from "./Components/QuizResult";
 const Tab = createMaterialBottomTabNavigator();
 function MyTabs() {
   return (
-    <Tab.Navigator barStyle={[styles.center]}>
-      <Tab.Screen name="DECKS" component={Home} />
-      <Tab.Screen name="AddDeck" component={AddDeck} />
+    <Tab.Navigator
+      barStyle={[styles.center, styles.tabBar]}
+      activeColor="white"
+      inactiveColor="#ddd"
+    >
+      <Tab.Screen
+        name="DECKS"
+        component={Home}
+        options={{
+          title: "Decks",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="cards-playing-outline"
+              size={22}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="AddDeck"
+        component={AddDeck}
+        options={{
+          title: "Add Deck",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="layers-plus"
+              size={22}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -50,4 +81,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
   },
   statusBar: { marginBottom: 20 },
+  tabBar: {
+    backgroundColor: "#00b2ff",
+  },
 });

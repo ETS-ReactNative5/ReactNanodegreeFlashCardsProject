@@ -25,7 +25,9 @@ function Home(props) {
     <SafeAreaView style={styles.container}>
       {deckIds.length === 0 && (
         <View style={[styles.container]}>
-          <Text>Start Adding your decks and test your knowledge</Text>
+          <View style={styles.noDecks}>
+            <Text>Start Adding your decks and test your knowledge</Text>
+          </View>
         </View>
       )}
       <FlatList
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: 40,
   },
   deckHeader: {
     borderWidth: 1,
@@ -62,5 +65,12 @@ const styles = StyleSheet.create({
     borderColor: "#bbb",
     margin: 10,
     padding: 10,
+  },
+  noDecks: {
+    borderWidth: 1,
+    padding: 15,
+    fontSize: 20,
+    borderRadius: 10,
+    backgroundColor: "#00ffb2",
   },
 });
