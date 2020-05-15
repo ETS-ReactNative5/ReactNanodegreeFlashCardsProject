@@ -28,6 +28,7 @@ function Quiz(props) {
     setShowAnswer(false);
   };
   const onSubmitAnswer = (isCorrect) => {
+    setShowAnswer(false);
     let score = points;
     if (isCorrect) {
       score = points + 1;
