@@ -68,6 +68,8 @@ const styles = StyleSheet.create({
     padding: 10,
     width: Dimensions.get("window").width * 0.7,
     alignItems: "center",
+    backgroundColor: "black",
+    color: "white",
   },
   noDecks: {
     borderWidth: 1,

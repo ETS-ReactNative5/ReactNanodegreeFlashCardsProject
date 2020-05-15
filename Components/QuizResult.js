@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import { CommonActions } from "@react-navigation/native";
 
 export default function QuizResult(props) {
@@ -12,15 +18,14 @@ export default function QuizResult(props) {
   };
   return (
     <View style={[styles.container]}>
-      <Text>Result</Text>
-      <Text>
-        {points}/{totalPoints}
+      <Text style={{ fontSize: 18, marginBottom: 49 }}>
+        Score {points}/{totalPoints}
       </Text>
-      <TouchableOpacity onPress={quizAgain}>
-        <Text>Quiz Again</Text>
+      <TouchableOpacity onPress={quizAgain} style={styles.btn}>
+        <Text style={{ color: "white" }}>Quiz Again</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={backToDeck}>
-        <Text>Back to {deckTitle}</Text>
+      <TouchableOpacity onPress={backToDeck} style={styles.btn}>
+        <Text style={{ color: "white" }}>Back to {deckTitle}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -30,6 +35,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
+    // justifyContent: "center",
+    paddingTop: 40,
+  },
+  btn: {
+    borderWidth: 1,
+    width: Dimensions.get("window").width * 0.75,
+    borderRadius: 5,
+    borderColor: "#ccc",
+    height: 38,
     justifyContent: "center",
+    backgroundColor: "#00b2ff",
+    margin: 5,
+    alignItems: "center",
   },
 });

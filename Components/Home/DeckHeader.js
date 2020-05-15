@@ -7,8 +7,8 @@ function DeckHeader(props) {
     const { title, questions } = props.deck;
     return (
       <View>
-        <Text>{title}</Text>
-        <Text>{questions.length} Cards</Text>
+        <Text style={{ color: "white" }}>{title}</Text>
+        <Text style={{ color: "white" }}>{questions.length} Cards</Text>
       </View>
     );
   }

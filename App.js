@@ -69,7 +69,11 @@ export default function App() {
           <Stack.Screen name="DeckScreen" component={DeckScreen} />
           <Stack.Screen name="AddCard" component={AddCard} />
           <Stack.Screen name="Quiz" component={Quiz} />
-          <Stack.Screen name="QuizResult" component={QuizResult} />
+          <Stack.Screen
+            name="QuizResult"
+            component={QuizResult}
+            options={{ title: "Results" }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
