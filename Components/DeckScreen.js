@@ -55,10 +55,14 @@ function DeckScreen(props) {
     </View>
   );
 }
-export default connect(({ decks }, props) => ({
-  deckTitle: decks[props.route.params.deckId].title,
-  cardsCount: decks[props.route.params.deckId].questions.length,
-}))(DeckScreen);
+export default connect(({ decks }, props) => {
+  return decks[props.route.params.deckId]
+    ? {
+        deckTitle: decks[props.route.params.deckId].title,
+        cardsCount: decks[props.route.params.deckId].questions.length,
+      }
+    : {};
+})(DeckScreen);
 
 const styles = StyleSheet.create({
   container: {
